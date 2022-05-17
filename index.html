@@ -1,0 +1,264 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>核酸检测结果</title>
+  <style type="text/css">
+  	@font-face {
+  font-family: "iconfont"; /* Project id 3363959 */
+  src: url('//at.alicdn.com/t/font_3363959_2juz9jcx7za.woff2?t=1651060851945') format('woff2'),
+       url('//at.alicdn.com/t/font_3363959_2juz9jcx7za.woff?t=1651060851945') format('woff'),
+       url('//at.alicdn.com/t/font_3363959_2juz9jcx7za.ttf?t=1651060851945') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-close:before {
+  content: "\e66a";
+}
+
+.icon-qita:before {
+  content: "\e600";
+}
+
+.icon-dianhua:before {
+  content: "\e611";
+}
+
+.icon-zuojiantou:before {
+  content: "\e603";
+}
+
+html,body{
+  height: 100%;
+  background: #f2f2f2;
+  padding: 0;
+  margin: 0;
+}
+.header{
+  height: 55px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid rgb(217,217,217);
+  padding: 0 10px;
+  background: #fff;
+}
+
+.iconfont{
+  cursor: pointer;
+}
+.h-left{
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+}
+.t-l-r{
+  font-weight: bold;
+  margin-right: 12px;
+  font-size: 22px;
+}
+.h-left span{
+  font-weight: 500;
+}
+.h-right{
+  display: flex;
+  align-items: center;
+}
+.t-hr{
+  width: 1px;
+  height: 22px;
+  background: rgb(217,217,217);
+  margin: 0 6px;
+}
+.h-r-d{
+  font-size: 18px;
+  font-weight: bold;
+}
+.h-r-c{
+  font-size: 18px;
+  font-weight: bold;
+}
+.content{
+  background: #fff;
+  border-radius: 6px;
+  margin: 10px;
+  padding: 0 10px;
+}
+.c-title{
+  line-height: 46px;
+  text-align: center;
+  font-size: 16px;
+  border-bottom: 1px solid rgb(217,217,217);
+}
+.c-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+.c-c-circle{
+  width: 125px;
+  height: 125px;
+  border-radius: 50%;
+  background: #57ad6c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8px;
+  font-size: 22px;
+  color: #fff;
+  font-weight: normal;
+  letter-spacing: 2px;
+}
+.c-c-des{
+  font-size: 14px;
+  margin-top: 12px;
+}
+.c-c-des i {
+  font-style: normal;
+  color: #859d8f;
+  margin-left: 8px;
+}
+.c-detail{
+  font-size: 14px;
+  background: #f6fafd;
+  padding: 10px 16px;
+  margin: 15px 0;
+}
+.c-detail .value{
+  color: #9ca0a2;
+  margin-left: 5px;
+}
+.c-footer{
+  font-size: 12px;
+  line-height: 20px;
+  padding-bottom: 12px;
+  color: #8c8c8c;
+}
+.footer{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 12px;
+  width: 100%;
+}
+.footer .f-l {
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+}
+.f-l-1{
+  color:#2e2e2e;
+}
+.f-l-1 span{
+  color: #2e5180;
+}
+.f-l-1 i{
+  color: #2066f3;
+}
+.f-l-2{
+  color: #8b8b8b;
+}
+.f-l-2 span{
+  width: 26px;
+  height: 1px;
+  background: #949494;
+  margin: 0 10px;
+}
+.f-l-3{
+  color: #3356a7;
+  margin-bottom: 5px;
+}
+
+  	
+  </style>
+  
+  <script type="text/javascript">
+  	
+  	// 日期变两位数
+		function getTwo(n) {
+  			return n < 10 ? '0' + n : n;
+		}
+	// 获取前一天日期
+		function getPreDay() {
+  			const date = new Date();
+  			date.setTime(date.getTime() - 24 * 60 * 60 * 1000);
+  			const year = date.getFullYear();
+  			const month = getTwo(date.getMonth() + 1);
+  			const day = getTwo(date.getDate());
+  			return '${year}-${month}-${day}';
+		}
+
+		function setTexttime(time) { 
+  			const timeEl = document.getElementById('time');
+  			timeEl.innerHTML = getPreDay() + ' ' + time;
+		}
+
+
+  </script>
+</head>
+<body>
+	
+	<script>setTexttime('12:25:30');</script>
+  <!-- <div class="header">
+    <div class="h-left">
+      <i class="iconfont icon-zuojiantou t-l-r"></i>
+      <span>核酸检测结果</span>
+    </div>
+    <div class="h-right">
+      <i class="iconfont icon-qita h-r-d"></i>
+      <span class="t-hr"></span>
+      <i class="iconfont icon-close h-r-c"></i>
+    </div>
+  </div> -->
+  <div class="content">
+    <div class="c-title">曹  健</div>
+    <div class="c-content">
+      <div class="c-c-circle">阴性</div>
+      <span class="c-c-des">核酸结果为<i>阴性</i></span>
+    </div>
+    <div class="c-detail">
+      <div class="c-d-wrap">
+        <span class="label">检测时间:</span>
+        <span class="value" id="time"></span>
+      </div>
+      <div class="c-d-wrap">
+        <span class="label">检测机构:</span>
+        <span class="value">介休市中医医院</span>
+      </div>
+    </div>
+    <div class="c-footer">
+      若上述信息并非你的最近一次核酸检测结果，可向核验人员出示最新的核酸检测纸质报告
+    </div>
+  </div>
+  <div class="footer">
+    <div class="f-l f-l-1">
+      山西健康码服务热线：
+      <span>0354-12345</span>
+      <i class="iconfont icon-dianhua f-dh"></i>
+    </div>
+    <div class="f-l f-l-2">
+      <span></span>
+      本服务由山西省人民政府提供
+      <span></span>
+    </div>
+    <div class="f-l f-l-3">常见问题</div>
+  </div>
+</body>
+
+</html>
